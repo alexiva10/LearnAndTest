@@ -19,6 +19,9 @@ class ContentModel: ObservableObject {
     @Published var currentLesson: Lesson?
     var currentLessonIndex = 0
     
+    //Current lesson explination (for CodeTextView)
+    @Published var lessonDescription = NSAttributedString()
+    
     var styleData: Data?
     
     init() {
@@ -66,6 +69,7 @@ class ContentModel: ObservableObject {
         }
         
         currentLesson = currentModule!.content.lesson[currentLessonIndex]
+        lessonDescription = addStyling(currentLesson!.explination)
     }
     
     func nextLesson() {
@@ -75,6 +79,7 @@ class ContentModel: ObservableObject {
         if currentLessonIndex < currentModule!.content.lesson.count {
             // Set the current lesson property
             currentLesson = currentModule!.content.lesson[currentLessonIndex]
+            lessonDescription = addStyling(currentLesson!.explination)
         } else {
             // Reset lesson state
             currentLessonIndex = 0
@@ -88,5 +93,24 @@ class ContentModel: ObservableObject {
         } else {
             return false
         }
+    }
+    
+    // Code Styling
+    
+    private func addStyling(_ htmlString: String) -> NSAttributedString {
+        var resultString = NSAttributedString()
+        var data = Data()
+        // Add the styling data
+        if styleData != nil {
+            data.append(self.styleData!)
+        }
+        // Add the html data
+        data.append(Data(htmlString.utf8))
+        // Convert to atributed string
+        if let attributedString = try? NSAttributedString(data: data, options: [.documentType: NSAttributedString.DocumentType.html], documentAttributes: nil) {
+            resultString = attributedString
+        }
+
+        return resultString
     }
 }
