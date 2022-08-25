@@ -25,6 +25,7 @@
 		AD5917F028B36D9A004B1F99 /* AVKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD5917EF28B36D9A004B1F99 /* AVKit.framework */; };
 		AD5917F228B36EB2004B1F99 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5917F128B36EB2004B1F99 /* Constants.swift */; };
 		AD5917F428B4C422004B1F99 /* CodeTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5917F328B4C41D004B1F99 /* CodeTextView.swift */; };
+		AD5917F628B74A85004B1F99 /* RectangleCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5917F528B74A85004B1F99 /* RectangleCard.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +67,7 @@
 		AD5917EF28B36D9A004B1F99 /* AVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = System/Library/Frameworks/AVKit.framework; sourceTree = SDKROOT; };
 		AD5917F128B36EB2004B1F99 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		AD5917F328B4C41D004B1F99 /* CodeTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeTextView.swift; sourceTree = "<group>"; };
+		AD5917F528B74A85004B1F99 /* RectangleCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RectangleCard.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,6 +165,7 @@
 				AD5917EA28B15452004B1F99 /* ContentViewRow.swift */,
 				AD5917EC28B36B4B004B1F99 /* ContentDetailView.swift */,
 				AD5917F328B4C41D004B1F99 /* CodeTextView.swift */,
+				AD5917F528B74A85004B1F99 /* RectangleCard.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -342,6 +345,7 @@
 				AD5917F428B4C422004B1F99 /* CodeTextView.swift in Sources */,
 				AD5917DF28AE2897004B1F99 /* ContentModel.swift in Sources */,
 				AD5917E528AF68FE004B1F99 /* Models.swift in Sources */,
+				AD5917F628B74A85004B1F99 /* RectangleCard.swift in Sources */,
 				AD5917F228B36EB2004B1F99 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

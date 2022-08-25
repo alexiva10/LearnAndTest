@@ -21,15 +21,14 @@ struct HomeView: View {
                     LazyVStack {
                         ForEach(model.modules) { module in
                             VStack(spacing: 20) {
-                                NavigationLink {
-                                    ContentView().onAppear(perform: {
-                                        model.beginModule(module.id)
-                                    })
-                                } label: {
+                               
+                                NavigationLink(
+                                    destination: ContentView().onAppear(perform: {
+                                    model.beginModule(module.id)
+                                    }), tag: module.id, selection: $model.currentContentSelected, label: {
                                     // Learning Card
                                         HomeViewRow(image: module.content.image, title: "Learn \(module.category)", description: module.content.description, count: "\(module.content.lesson.count) Lessons", time: module.content.time)
-                                }
-
+                                })
                             
                                 // Test Card
                                 HomeViewRow(image: module.test.image, title: "\(module.category) Test", description: module.test.description, count: "\(module.test.question.count) Lessons", time: module.test.time)
@@ -50,3 +49,4 @@ struct HomeView_Previews: PreviewProvider {
         HomeView().environmentObject(ContentModel())
     }
 }
+
