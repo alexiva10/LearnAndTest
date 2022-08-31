@@ -26,6 +26,7 @@
 		AD5917F228B36EB2004B1F99 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5917F128B36EB2004B1F99 /* Constants.swift */; };
 		AD5917F428B4C422004B1F99 /* CodeTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5917F328B4C41D004B1F99 /* CodeTextView.swift */; };
 		AD5917F628B74A85004B1F99 /* RectangleCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5917F528B74A85004B1F99 /* RectangleCard.swift */; };
+		AD5917F828BFAF5C004B1F99 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5917F728BFAF57004B1F99 /* TestView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +69,7 @@
 		AD5917F128B36EB2004B1F99 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		AD5917F328B4C41D004B1F99 /* CodeTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeTextView.swift; sourceTree = "<group>"; };
 		AD5917F528B74A85004B1F99 /* RectangleCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RectangleCard.swift; sourceTree = "<group>"; };
+		AD5917F728BFAF57004B1F99 /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,6 +168,7 @@
 				AD5917EC28B36B4B004B1F99 /* ContentDetailView.swift */,
 				AD5917F328B4C41D004B1F99 /* CodeTextView.swift */,
 				AD5917F528B74A85004B1F99 /* RectangleCard.swift */,
+				AD5917F728BFAF57004B1F99 /* TestView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -336,6 +339,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AD5917F828BFAF5C004B1F99 /* TestView.swift in Sources */,
 				AD5917B328AE268B004B1F99 /* HomeView.swift in Sources */,
 				AD5917E728AF75B9004B1F99 /* HomeViewRow.swift in Sources */,
 				AD5917E928B14DA6004B1F99 /* ContentView.swift in Sources */,

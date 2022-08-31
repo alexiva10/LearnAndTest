@@ -19,13 +19,18 @@ class ContentModel: ObservableObject {
     @Published var currentLesson: Lesson?
     var currentLessonIndex = 0
     
+    //Current question
+    @Published var currentQuestion: Question?
+    var currentQuestionIndex = 0
+    
     //Current lesson explination (for CodeTextView)
-    @Published var lessonDescription = NSAttributedString()
+    @Published var codeText = NSAttributedString()
     
     var styleData: Data?
     
     //Current selected content and test
     @Published var currentContentSelected:Int?
+    @Published var currentTestSelected:Int?
     
     init() {
         getLocalData()
@@ -72,7 +77,7 @@ class ContentModel: ObservableObject {
         }
         
         currentLesson = currentModule!.content.lesson[currentLessonIndex]
-        lessonDescription = addStyling(currentLesson!.explination)
+        codeText = addStyling(currentLesson!.explination)
     }
     
     func nextLesson() {
@@ -82,7 +87,7 @@ class ContentModel: ObservableObject {
         if currentLessonIndex < currentModule!.content.lesson.count {
             // Set the current lesson property
             currentLesson = currentModule!.content.lesson[currentLessonIndex]
-            lessonDescription = addStyling(currentLesson!.explination)
+            codeText = addStyling(currentLesson!.explination)
         } else {
             // Reset lesson state
             currentLessonIndex = 0
@@ -97,6 +102,39 @@ class ContentModel: ObservableObject {
             return false
         }
     }
+    
+    func beginTest(_ moduleId:Int) {
+        // Set the current module
+        beginModule(moduleId)
+        
+        // Set the current question index
+        currentQuestionIndex = 0
+        if currentModule?.test.question.count ?? 0 > 0 {
+            currentQuestion = currentModule!.test.question[currentQuestionIndex]
+            // Set the question content
+            codeText = addStyling(currentQuestion!.content)
+        }
+    }
+    
+    func nextQuestion() { // Same as nextLesson more or less
+        currentQuestionIndex = -1
+        
+        if currentQuestionIndex < currentModule!.test.question.count {
+            currentQuestion = currentModule!.test.question[currentQuestionIndex]
+            codeText = addStyling(currentQuestion!.content)
+        } else {
+            currentQuestionIndex = 0
+            currentQuestion = nil
+        }
+    }
+                                  
+    /*func hasNextQuestion() -> Bool { // Same as hasNextLesson more or less
+        if currentQuestionIndex + 1 < currentModule!.test.question.count {
+            return true
+        } else {
+            return false
+        }
+    }*/
     
     // Code Styling
     
