@@ -27,6 +27,7 @@
 		AD5917F428B4C422004B1F99 /* CodeTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5917F328B4C41D004B1F99 /* CodeTextView.swift */; };
 		AD5917F628B74A85004B1F99 /* RectangleCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5917F528B74A85004B1F99 /* RectangleCard.swift */; };
 		AD5917F828BFAF5C004B1F99 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5917F728BFAF57004B1F99 /* TestView.swift */; };
+		AD5917FA28C136D8004B1F99 /* TestResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5917F928C136D1004B1F99 /* TestResultView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +71,7 @@
 		AD5917F328B4C41D004B1F99 /* CodeTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeTextView.swift; sourceTree = "<group>"; };
 		AD5917F528B74A85004B1F99 /* RectangleCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RectangleCard.swift; sourceTree = "<group>"; };
 		AD5917F728BFAF57004B1F99 /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
+		AD5917F928C136D1004B1F99 /* TestResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestResultView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,6 +171,7 @@
 				AD5917F328B4C41D004B1F99 /* CodeTextView.swift */,
 				AD5917F528B74A85004B1F99 /* RectangleCard.swift */,
 				AD5917F728BFAF57004B1F99 /* TestView.swift */,
+				AD5917F928C136D1004B1F99 /* TestResultView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -340,6 +343,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AD5917F828BFAF5C004B1F99 /* TestView.swift in Sources */,
+				AD5917FA28C136D8004B1F99 /* TestResultView.swift in Sources */,
 				AD5917B328AE268B004B1F99 /* HomeView.swift in Sources */,
 				AD5917E728AF75B9004B1F99 /* HomeViewRow.swift in Sources */,
 				AD5917E928B14DA6004B1F99 /* ContentView.swift in Sources */,
