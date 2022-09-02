@@ -34,6 +34,7 @@ class ContentModel: ObservableObject {
     
     init() {
         getLocalData()
+        getRemoteData()
     }
     
     func getLocalData() {
@@ -54,6 +55,44 @@ class ContentModel: ObservableObject {
         } catch {
             print("Could't parse!")
         }
+    }
+    
+    func getRemoteData() {
+        // String path
+        let urlString = "https://alexiva10.github.io/LearnAndTest-Data/data2.json"
+        
+        // Create a url object
+        let url = URL(string: urlString)
+        
+        guard url != nil else {
+            // Could't create url
+            return
+        }
+        // Create a URLRequest object
+        let request = URLRequest(url: url!)
+        // Get the session and kick off the task
+        let session = URLSession.shared
+        
+        let dataTask = session.dataTask(with: request) { data, response, error in
+            // Check if there is an error
+            guard error == nil else {
+                return
+            }
+            // Create json decoder
+            do {
+                let decoder = JSONDecoder()
+                // Decode
+                let modules = try decoder.decode([Module].self, from: data!)
+                // Apend parsed modules
+                self.modules += modules
+            } catch  {
+                // Couldn't parse
+            }
+            
+        }
+        
+        // Kick off data task
+        dataTask.resume()
     }
     
     func beginModule(_ moduleid:Int) {
