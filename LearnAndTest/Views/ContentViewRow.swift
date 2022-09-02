@@ -31,8 +31,3 @@ struct ContentViewRow: View {
     }
 }
 
-/*struct ContentViewRow_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentViewRow()
-    }
-}*/

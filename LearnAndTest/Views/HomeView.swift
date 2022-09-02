@@ -39,9 +39,9 @@ struct HomeView: View {
                                         // Test Card
                                         HomeViewRow(image: module.test.image, title: "\(module.category) Test", description: module.test.description, count: "\(module.test.question.count) Lessons", time: module.test.time)}
                                 
-                                /*NavigationLink(destination: EmptyView()) {
+                                NavigationLink(destination: EmptyView()) {
                                     EmptyView()
-                                }*/
+                                }
                                 
                             }
                             .padding(.bottom, 10)

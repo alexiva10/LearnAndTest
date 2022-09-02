@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @EnvironmentObject var model: ContentModel
+    @EnvironmentObject var model:ContentModel
     
     var body: some View {
         
@@ -18,7 +18,7 @@ struct ContentView: View {
             LazyVStack {
                 //Confirm that currentModule is set
                 if model.currentModule != nil {
-                    ForEach(0..<model.currentModule!.content.lesson.count) { index in
+                    ForEach(0..<model.currentModule!.content.lesson.count, id: \.self) { index in
                         NavigationLink {
                             ContentDetailView().onAppear {
                                 model.beginLesson(index)
