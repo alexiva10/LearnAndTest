@@ -18,7 +18,7 @@ struct ContentView: View {
             LazyVStack {
                 //Confirm that currentModule is set
                 if model.currentModule != nil {
-                    ForEach(0..<model.currentModule!.content.lesson.count, id: \.self) { index in
+                    ForEach(0..<model.currentModule!.content.lessons.count, id: \.self) { index in
                         NavigationLink {
                             ContentDetailView().onAppear {
                                 model.beginLesson(index)

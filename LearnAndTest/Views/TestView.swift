@@ -19,7 +19,7 @@ struct TestView: View {
         if model.currentQuestion != nil {
             VStack (alignment: .leading) {
                 //Question number
-                Text("Question \(model.currentQuestionIndex + 1) of \(model.currentModule?.test.question.count ?? 0)")
+                Text("Question \(model.currentQuestionIndex + 1) of \(model.currentModule?.test.questions.count ?? 0)")
                     .padding(.leading, 20)
                 
                 //Question
@@ -109,7 +109,7 @@ struct TestView: View {
     var buttonText:String {
         //Check if answer has been submitted
         if submitted == true {
-            if model.currentQuestionIndex + 1 == model.currentModule!.test.question.count {
+            if model.currentQuestionIndex + 1 == model.currentModule!.test.questions.count {
                 return "Finish"
             } else {
                 return "Next"

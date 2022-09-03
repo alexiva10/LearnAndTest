@@ -14,7 +14,7 @@ struct ContentViewRow: View {
     
     var body: some View {
         
-        let lessonC = model.currentModule!.content.lesson[index]
+        let lessonC = model.currentModule!.content.lessons[index]
         ZStack (alignment: .leading) {
             Rectangle().foregroundColor(.white).cornerRadius(10).shadow(radius: 5).frame(height: 66)
             HStack (spacing: 30) {

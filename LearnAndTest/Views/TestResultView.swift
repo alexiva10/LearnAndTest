@@ -17,7 +17,7 @@ struct TestResultView: View {
         guard model.currentModule != nil else {
             return ""
         }
-        let pct = Double(numCorrect)/Double(model.currentModule!.test.question.count)
+        let pct = Double(numCorrect)/Double(model.currentModule!.test.questions.count)
         if pct > 0.5 {
             return "Awesome!"
         } else if pct > 0.2 {
@@ -34,7 +34,7 @@ struct TestResultView: View {
             Text(resultHeading)
                 .font(.title)
             Spacer()
-            Text("You got \(numCorrect) out of \(model.currentModule?.test.question.count ?? 0)")
+            Text("You got \(numCorrect) out of \(model.currentModule?.test.questions.count ?? 0)")
             Spacer()
             Button {
                 // Send user to HomeView

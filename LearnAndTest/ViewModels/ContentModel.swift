@@ -46,6 +46,7 @@ class ContentModel: ObservableObject {
             self.modules = modules
         } catch {
             print("Couldn't parse local data!")
+            print(error)
         }
         
         let styleUrl = Bundle.main.url(forResource: "style", withExtension: "html")
@@ -87,6 +88,8 @@ class ContentModel: ObservableObject {
                 self.modules += modules
             } catch  {
                 // Couldn't parse
+                print("Couldn't parse remote data!")
+                print(error)
             }
             
         }
@@ -109,13 +112,13 @@ class ContentModel: ObservableObject {
     
     func beginLesson(_ lessonIndex:Int) {
         //Check that lesson index is within range of module lessons
-        if lessonIndex < currentModule!.content.lesson.count {
+        if lessonIndex < currentModule!.content.lessons.count {
             currentLessonIndex = lessonIndex
         } else {
             currentLessonIndex = 0
         }
         
-        currentLesson = currentModule!.content.lesson[currentLessonIndex]
+        currentLesson = currentModule!.content.lessons[currentLessonIndex]
         codeText = addStyling(currentLesson!.explination)
     }
     
@@ -123,9 +126,9 @@ class ContentModel: ObservableObject {
         // Advance the lesson index
         currentLessonIndex += 1
         // Check that is is withing range
-        if currentLessonIndex < currentModule!.content.lesson.count {
+        if currentLessonIndex < currentModule!.content.lessons.count {
             // Set the current lesson property
-            currentLesson = currentModule!.content.lesson[currentLessonIndex]
+            currentLesson = currentModule!.content.lessons[currentLessonIndex]
             codeText = addStyling(currentLesson!.explination)
         } else {
             // Reset lesson state
@@ -135,7 +138,7 @@ class ContentModel: ObservableObject {
     }
     
     func hasNextLesson() -> Bool {
-        if currentLessonIndex + 1 < currentModule!.content.lesson.count {
+        if currentLessonIndex + 1 < currentModule!.content.lessons.count {
             return true
         } else {
             return false
@@ -148,18 +151,18 @@ class ContentModel: ObservableObject {
         
         // Set the current question index
         currentQuestionIndex = 0
-        if currentModule?.test.question.count ?? 0 > 0 {
-            currentQuestion = currentModule!.test.question[currentQuestionIndex]
+        if currentModule?.test.questions.count ?? 0 > 0 {
+            currentQuestion = currentModule!.test.questions[currentQuestionIndex]
             // Set the question content
             codeText = addStyling(currentQuestion!.content)
         }
     }
     
     func nextQuestion() { // Same as nextLesson more or less
-        currentQuestionIndex = -1
+        currentQuestionIndex += 1
         
-        if currentQuestionIndex < currentModule!.test.question.count {
-            currentQuestion = currentModule!.test.question[currentQuestionIndex]
+        if currentQuestionIndex < currentModule!.test.questions.count {
+            currentQuestion = currentModule!.test.questions[currentQuestionIndex]
             codeText = addStyling(currentQuestion!.content)
         } else {
             currentQuestionIndex = 0

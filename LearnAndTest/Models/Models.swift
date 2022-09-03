@@ -19,7 +19,7 @@ class Content : Decodable, Identifiable {
     var image: String
     var time: String
     var description: String
-    var lesson: [Lesson]
+    var lessons: [Lesson]
 }
 
 class Lesson : Decodable, Identifiable {
@@ -35,7 +35,7 @@ class Test : Decodable, Identifiable {
     var image: String
     var time: String
     var description: String
-    var question: [Question]
+    var questions: [Question]
 }
 
 class Question : Decodable, Identifiable {
