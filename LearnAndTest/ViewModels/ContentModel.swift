@@ -45,7 +45,7 @@ class ContentModel: ObservableObject {
             let modules = try jsonDecoder.decode([Module].self, from: jsonData)
             self.modules = modules
         } catch {
-            print("Could't parse!")
+            print("Couldn't parse local data!")
         }
         
         let styleUrl = Bundle.main.url(forResource: "style", withExtension: "html")
@@ -53,7 +53,7 @@ class ContentModel: ObservableObject {
             let styleData = try Data(contentsOf: styleUrl!)
             self.styleData = styleData
         } catch {
-            print("Could't parse!")
+            print("Couldn't parse!")
         }
     }
     
@@ -98,7 +98,7 @@ class ContentModel: ObservableObject {
     func beginModule(_ moduleid:Int) {
         //Find index for this module id
         for index in 0..<modules.count {
-            if modules[index].id == index {
+            if modules[index].id == moduleid {
                 currentModuleIndex = index
                 break
             }
