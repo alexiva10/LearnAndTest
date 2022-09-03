@@ -22,7 +22,7 @@ class Content : Decodable, Identifiable {
     var lessons: [Lesson]
 }
 
-class Lesson : Decodable, Identifiable {
+struct Lesson : Decodable, Identifiable {
     var id: Int
     var title: String
     var video: String

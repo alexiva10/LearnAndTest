@@ -138,6 +138,10 @@ class ContentModel: ObservableObject {
     }
     
     func hasNextLesson() -> Bool {
+        
+        guard currentModule != nil else {
+            return false
+        }
         if currentLessonIndex + 1 < currentModule!.content.lessons.count {
             return true
         } else {
