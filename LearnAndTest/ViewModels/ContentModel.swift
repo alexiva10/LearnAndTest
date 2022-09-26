@@ -6,8 +6,12 @@
 //
 
 import Foundation
+import Firebase
 
 class ContentModel: ObservableObject {
+    
+    let db = Firestore.firestore()
+    
     //List of modules
     @Published var modules = [Module]()
     
@@ -33,12 +37,50 @@ class ContentModel: ObservableObject {
     @Published var currentTestSelected:Int?
     
     init() {
-        getLocalData()
-        getRemoteData()
+        getLocalStyles()
+        getDatabaseModules()
+        
+        // getRemoteData()
     }
     
-    func getLocalData() {
-        let jsonUrl = Bundle.main.url(forResource: "data", withExtension: "json")
+    func getDatabaseModules() {
+        
+        let collection = db.collection("modules")
+        
+        collection.getDocuments { querySnapshot, error in
+            if error == nil && querySnapshot != nil {
+                var modules = [Module]()
+                
+                for doc in querySnapshot!.documents {
+                    var m = Module()
+                    
+                    m.id = doc["id"] as? String ?? UUID().uuidString
+                    m.category = doc["category"] as? String ?? ""
+                    
+                    let contentMap = doc["content"] as! [String:Any]
+                    m.content.id = contentMap["id"] as? String ?? ""
+                    m.content.description = contentMap["description"] as? String ?? ""
+                    m.content.image = contentMap["image"] as? String ?? ""
+                    m.content.time = contentMap["time"] as? String ?? ""
+                    
+                    let testMap = doc["test"] as! [String:Any]
+                    m.test.id = testMap["id"] as? String ?? ""
+                    m.test.description = testMap["description"] as? String ?? ""
+                    m.test.image = testMap["image"] as? String ?? ""
+                    m.test.time = testMap["time"] as? String ?? ""
+                    
+                    
+                    modules.append(m)
+                }
+                DispatchQueue.main.async {
+                    self.modules = modules
+                }
+            }
+        }
+    }
+    
+    func getLocalStyles() {
+        /* let jsonUrl = Bundle.main.url(forResource: "data", withExtension: "json")
         do {
             let jsonData = try Data(contentsOf: jsonUrl!)
             let jsonDecoder = JSONDecoder()
@@ -47,7 +89,7 @@ class ContentModel: ObservableObject {
         } catch {
             print("Couldn't parse local data!")
             print(error)
-        }
+        } */
         
         let styleUrl = Bundle.main.url(forResource: "style", withExtension: "html")
         do {
@@ -98,7 +140,7 @@ class ContentModel: ObservableObject {
         dataTask.resume()
     }
     
-    func beginModule(_ moduleid:Int) {
+    func beginModule(_ moduleid:String) {
         //Find index for this module id
         for index in 0..<modules.count {
             if modules[index].id == moduleid {
@@ -149,7 +191,7 @@ class ContentModel: ObservableObject {
         }
     }
     
-    func beginTest(_ moduleId:Int) {
+    func beginTest(_ moduleId:String) {
         // Set the current module
         beginModule(moduleId)
         

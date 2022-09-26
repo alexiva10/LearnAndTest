@@ -8,41 +8,41 @@
 import Foundation
 
 class Module : Decodable, Identifiable {
-    var id: Int
-    var category: String
-    var content: Content
-    var test: Test
+    var id: String = ""
+    var category: String = ""
+    var content: Content = Content()
+    var test: Test = Test()
 }
 
 class Content : Decodable, Identifiable {
-    var id: Int
-    var image: String
-    var time: String
-    var description: String
-    var lessons: [Lesson]
+    var id: String = ""
+    var image: String = ""
+    var time: String = ""
+    var description: String = ""
+    var lessons: [Lesson] = [Lesson]()
 }
 
 struct Lesson : Decodable, Identifiable {
-    var id: Int
-    var title: String
-    var video: String
-    var duration: String
-    var explination: String
+    var id: String = ""
+    var title: String = ""
+    var video: String = ""
+    var duration: String = ""
+    var explination: String = ""
 }
 
 class Test : Decodable, Identifiable {
-    var id: Int
-    var image: String
-    var time: String
-    var description: String
-    var questions: [Question]
+    var id: String = ""
+    var image: String = ""
+    var time: String = ""
+    var description: String = ""
+    var questions: [Question] = [Question]()
 }
 
 class Question : Decodable, Identifiable {
-    var id: Int
-    var content: String
-    var correctIndex: Int
-    var answers: [String]
+    var id: String = ""
+    var content: String = ""
+    var correctIndex: Int = 0
+    var answers: [String] = [String]()
 }
 
 
