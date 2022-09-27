@@ -38,12 +38,67 @@ class ContentModel: ObservableObject {
     
     init() {
         getLocalStyles()
-        getDatabaseModules()
+        getModules()
         
         // getRemoteData()
     }
     
-    func getDatabaseModules() {
+    func getLesson(module: Module, completion: @escaping () -> Void) {
+        let collection = db.collection("modules").document(module.id).collection("lessons")
+        collection.getDocuments { querySnap, error in
+            if error == nil && querySnap != nil {
+                var lessons = [Lesson]()
+                
+                for doc in querySnap!.documents {
+                    var l = Lesson()
+                    
+                    l.id = doc["id"] as? String ?? UUID().uuidString
+                    l.title = doc["title"] as? String ?? ""
+                    l.video = doc["video"] as? String ?? ""
+                    l.duration = doc["duration"] as? String ?? ""
+                    l.explination = doc["explanation"] as? String ?? ""
+                    
+                    lessons.append(l)
+                }
+                for (index, m) in self.modules.enumerated() {
+                    if m.id == module.id {
+                        self.modules[index].content.lessons = lessons
+                        
+                        completion()
+                    }
+                }
+            }
+        }
+    }
+    
+    func getQuestions(module: Module, completion: @escaping () -> Void) {
+        let collection = db.collection("modules").document(module.id).collection("questions")
+        collection.getDocuments { querySnap, error in
+            if error == nil && querySnap != nil {
+                var questions = [Question]()
+                
+                for doc in querySnap!.documents {
+                    var q = Question()
+                    
+                    q.id = doc["id"] as? String ?? UUID().uuidString
+                    q.content = doc["content"] as? String ?? ""
+                    q.correctIndex = doc["correctIndex"] as? Int ?? 0
+                    q.answers = doc["answers"] as? [String] ?? [String]()
+                    
+                    questions.append(q)
+                }
+                for (index, m) in self.modules.enumerated() {
+                    if m.id == module.id {
+                        self.modules[index].test.questions = questions
+                        
+                        completion()
+                    }
+                }
+            }
+        }
+    }
+    
+    func getModules() {
         
         let collection = db.collection("modules")
         

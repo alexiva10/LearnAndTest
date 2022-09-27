@@ -24,7 +24,9 @@ struct HomeView: View {
                                
                                 NavigationLink(
                                     destination: ContentView().onAppear(perform: {
-                                    model.beginModule(module.id)
+                                        model.getLesson(module: module) {
+                                            model.beginModule(module.id)
+                                        }
                                     }), tag: module.id.hash, selection: $model.currentContentSelected) {
                                         // Learning Card
                                         HomeViewRow(image: module.content.image, title: "Learn \(module.category)", description: module.content.description, count: "\(module.content.lessons.count) Lessons", time: module.content.time)
@@ -32,7 +34,11 @@ struct HomeView: View {
                                 
                                 NavigationLink(
                                     destination: TestView()
-                                        .onAppear(perform: { model.beginTest(module.id) }),
+                                        .onAppear(perform: {
+                                            model.getQuestions(module: module) {
+                                                model.beginTest(module.id)
+                                            }
+                                        }),
                                     tag: module.id.hash,
                                     selection: $model.currentTestSelected)
                                     {
