@@ -8,6 +8,7 @@ target 'LearnAndTest' do
   # Pods for LearnAndTest
 
 pod 'Firebase/Firestore'
+pod 'Firebase/Auth'
 
   target 'LearnAndTestTests' do
     inherit! :search_paths

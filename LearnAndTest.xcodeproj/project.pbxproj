@@ -11,6 +11,9 @@
 		808331867D3BF1C657EFAE45 /* Pods_LearnAndTest_LearnAndTestUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD1970649B860856469962AD /* Pods_LearnAndTest_LearnAndTestUITests.framework */; };
 		92A6750828D9B50C001A5928 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 92A6750728D9B50C001A5928 /* GoogleService-Info.plist */; };
 		92D9A8BB28C33CB50074B23D /* data.json in Resources */ = {isa = PBXBuildFile; fileRef = 92D9A8BA28C33CB50074B23D /* data.json */; };
+		92DE7D1E29110863009D7D5C /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92DE7D1D29110863009D7D5C /* LoginView.swift */; };
+		92DE7D202911089E009D7D5C /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92DE7D1F2911089E009D7D5C /* ProfileView.swift */; };
+		92DE7D22291108CC009D7D5C /* LaunchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92DE7D21291108CC009D7D5C /* LaunchView.swift */; };
 		A2728549901205DB6BCB8F0F /* Pods_LearnAndTestTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86A9DB7A213315875CCDD02A /* Pods_LearnAndTestTests.framework */; };
 		AD5917B128AE268A004B1F99 /* LearnAndTestApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5917B028AE268A004B1F99 /* LearnAndTestApp.swift */; };
 		AD5917B328AE268B004B1F99 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5917B228AE268B004B1F99 /* HomeView.swift */; };
@@ -59,6 +62,9 @@
 		89599E96BFF9A1DC8F8746E4 /* Pods-LearnAndTestTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LearnAndTestTests.release.xcconfig"; path = "Target Support Files/Pods-LearnAndTestTests/Pods-LearnAndTestTests.release.xcconfig"; sourceTree = "<group>"; };
 		92A6750728D9B50C001A5928 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		92D9A8BA28C33CB50074B23D /* data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = data.json; sourceTree = "<group>"; };
+		92DE7D1D29110863009D7D5C /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		92DE7D1F2911089E009D7D5C /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		92DE7D21291108CC009D7D5C /* LaunchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchView.swift; sourceTree = "<group>"; };
 		AD5917AD28AE268A004B1F99 /* LearnAndTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LearnAndTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD5917B028AE268A004B1F99 /* LearnAndTestApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearnAndTestApp.swift; sourceTree = "<group>"; };
 		AD5917B228AE268B004B1F99 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -127,8 +133,53 @@
 				4C332311315029B8914ACB09 /* Pods-LearnAndTestTests.debug.xcconfig */,
 				89599E96BFF9A1DC8F8746E4 /* Pods-LearnAndTestTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		92DE7D18291107F4009D7D5C /* Account */ = {
+			isa = PBXGroup;
+			children = (
+				92DE7D1D29110863009D7D5C /* LoginView.swift */,
+				92DE7D1F2911089E009D7D5C /* ProfileView.swift */,
+			);
+			path = Account;
+			sourceTree = "<group>";
+		};
+		92DE7D19291107F9009D7D5C /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				AD5917B228AE268B004B1F99 /* HomeView.swift */,
+				AD5917E628AF75B8004B1F99 /* HomeViewRow.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		92DE7D1A29110801009D7D5C /* Lessons */ = {
+			isa = PBXGroup;
+			children = (
+				AD5917E828B14DA1004B1F99 /* ContentView.swift */,
+				AD5917EA28B15452004B1F99 /* ContentViewRow.swift */,
+				AD5917EC28B36B4B004B1F99 /* ContentDetailView.swift */,
+			);
+			path = Lessons;
+			sourceTree = "<group>";
+		};
+		92DE7D1B29110806009D7D5C /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				AD5917F728BFAF57004B1F99 /* TestView.swift */,
+				AD5917F928C136D1004B1F99 /* TestResultView.swift */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
+		92DE7D1C2911080E009D7D5C /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				AD5917F328B4C41D004B1F99 /* CodeTextView.swift */,
+				AD5917F528B74A85004B1F99 /* RectangleCard.swift */,
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 		AD5917A428AE2688004B1F99 = {
@@ -196,15 +247,12 @@
 		AD5917DA28AE27FA004B1F99 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				AD5917B228AE268B004B1F99 /* HomeView.swift */,
-				AD5917E628AF75B8004B1F99 /* HomeViewRow.swift */,
-				AD5917E828B14DA1004B1F99 /* ContentView.swift */,
-				AD5917EA28B15452004B1F99 /* ContentViewRow.swift */,
-				AD5917EC28B36B4B004B1F99 /* ContentDetailView.swift */,
-				AD5917F328B4C41D004B1F99 /* CodeTextView.swift */,
-				AD5917F528B74A85004B1F99 /* RectangleCard.swift */,
-				AD5917F728BFAF57004B1F99 /* TestView.swift */,
-				AD5917F928C136D1004B1F99 /* TestResultView.swift */,
+				92DE7D21291108CC009D7D5C /* LaunchView.swift */,
+				92DE7D1C2911080E009D7D5C /* Common */,
+				92DE7D1B29110806009D7D5C /* Tests */,
+				92DE7D1A29110801009D7D5C /* Lessons */,
+				92DE7D19291107F9009D7D5C /* Home */,
+				92DE7D18291107F4009D7D5C /* Account */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -488,13 +536,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				AD5917F828BFAF5C004B1F99 /* TestView.swift in Sources */,
+				92DE7D22291108CC009D7D5C /* LaunchView.swift in Sources */,
 				AD5917FA28C136D8004B1F99 /* TestResultView.swift in Sources */,
 				AD5917B328AE268B004B1F99 /* HomeView.swift in Sources */,
 				AD5917E728AF75B9004B1F99 /* HomeViewRow.swift in Sources */,
 				AD5917E928B14DA6004B1F99 /* ContentView.swift in Sources */,
 				AD5917ED28B36B53004B1F99 /* ContentDetailView.swift in Sources */,
 				AD5917B128AE268A004B1F99 /* LearnAndTestApp.swift in Sources */,
+				92DE7D202911089E009D7D5C /* ProfileView.swift in Sources */,
 				AD5917EB28B15452004B1F99 /* ContentViewRow.swift in Sources */,
+				92DE7D1E29110863009D7D5C /* LoginView.swift in Sources */,
 				AD5917F428B4C422004B1F99 /* CodeTextView.swift in Sources */,
 				AD5917DF28AE2897004B1F99 /* ContentModel.swift in Sources */,
 				AD5917E528AF68FE004B1F99 /* Models.swift in Sources */,

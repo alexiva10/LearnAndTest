@@ -37,7 +37,7 @@ class ContentModel: ObservableObject {
     @Published var currentTestSelected:Int?
     
     init() {
-        getLocalStyles()
+        // getLocalStyles()
         getModules()
         
         // getRemoteData()
@@ -99,6 +99,8 @@ class ContentModel: ObservableObject {
     }
     
     func getModules() {
+        
+        getLocalStyles()
         
         let collection = db.collection("modules")
         
