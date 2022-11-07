@@ -7,8 +7,11 @@
 
 import Foundation
 import Firebase
+import FirebaseAuth
 
 class ContentModel: ObservableObject {
+    
+    @Published var loggedIn = false
     
     let db = Firestore.firestore()
     
@@ -41,6 +44,10 @@ class ContentModel: ObservableObject {
         getModules()
         
         // getRemoteData()
+    }
+    
+    func checkLogin() {
+        loggedIn = Auth.auth().currentUser != nil ? true : false
     }
     
     func getLesson(module: Module, completion: @escaping () -> Void) {
