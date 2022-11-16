@@ -36,6 +36,12 @@ struct LaunchView: View {
                         }
                     }
             }
+            /*.onAppear {
+                model.getModules()
+            }*/
+            .onReceive(NotificationCenter.default.publisher(for: UIApplication.willResignActiveNotification)) { _ in
+                model.saveData(writeToDatabase: true)
+            }
         }
     }
 }

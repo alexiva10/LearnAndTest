@@ -46,8 +46,34 @@ class ContentModel: ObservableObject {
         // getRemoteData()
     }
     
+    func getUserData() {
+        
+        guard Auth.auth().currentUser != nil else {
+            return
+        }
+        
+        let db = Firestore.firestore()
+        let ref = db.collection("users").document(Auth.auth().currentUser!.uid)
+        ref.getDocument { snapshot, error in
+            guard error == nil, snapshot != nil else {
+                return
+            }
+            let data = snapshot!.data()
+            let user = UserService.shared.user
+            user.name = data?["name"] as? String ?? ""
+            user.lastModule = data?["lastModule"] as? Int
+            user.lastLesson = data?["lastLesson"] as? Int
+            user.lastQuestion = data?["lastQuestion"] as? Int
+        }
+    }
+    
     func checkLogin() {
+        
         loggedIn = Auth.auth().currentUser != nil ? true : false
+        
+        if UserService.shared.user.name == "" {
+            getUserData()
+        }
     }
     
     func getLesson(module: Module, completion: @escaping () -> Void) {
@@ -204,6 +230,28 @@ class ContentModel: ObservableObject {
         dataTask.resume()
     }
     
+    func saveData(writeToDatabase:Bool = false) {
+        
+        if let loggedInUser = Auth.auth().currentUser {
+            
+            let user = UserService.shared.user
+            user.lastModule = currentModuleIndex
+            user.lastLesson = currentLessonIndex
+            user.lastQuestion = currentQuestionIndex
+            
+            if writeToDatabase {
+                
+                let db = Firestore.firestore()
+                let ref = db.collection("users").document(loggedInUser.uid)
+                ref.setData(["lastModuel": user.lastModule ?? NSNull(),
+                             "lastLesson": user.lastLesson ?? NSNull(),
+                             "lastQuestion": user.lastQuestion ?? NSNull()], merge: true)
+            }
+        }
+        
+        
+    }
+    
     func beginModule(_ moduleid:String) {
         //Find index for this module id
         for index in 0..<modules.count {
@@ -241,6 +289,7 @@ class ContentModel: ObservableObject {
             currentLessonIndex = 0
             currentLesson = nil
         }
+        saveData()
     }
     
     func hasNextLesson() -> Bool {
@@ -278,6 +327,7 @@ class ContentModel: ObservableObject {
             currentQuestionIndex = 0
             currentQuestion = nil
         }
+        saveData()
     }
                                   
     /*func hasNextQuestion() -> Bool { // Same as hasNextLesson more or less
